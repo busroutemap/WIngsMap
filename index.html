@@ -1,0 +1,88 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="鳥取,路線図,バス,日本交通,日ノ丸自動車,バスマップ,日の丸自動車,バス路線図,busmap,環境大学,公立鳥取環境大学" />
+    <title>WingsMap/app</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- vuejsまわり、後者は本番 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- pdfmakeまわり -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.62/pdfmake.min.js'></script>
+    <script src='build/vfs_fonts.js'></script>
+    <!-- papercss -->
+    <link rel="stylesheet" href="css/paper.css">
+    <!-- 個人のcss -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<template id="rowinfo">
+    <div class="rowinfo">
+        <!-- 
+            行先表示(「50若葉台」など)、
+            路線愛称(アイコン)、
+            追加情報(v-showで設定?)(例:何限に間に合うか)
+         -->
+        <span class="headsign"></span>
+        <span class="routeicon"></span>
+        <span class="optionalinfo"></span>
+    </div>
+</template>
+
+<template id="timetable">
+    <!-- 
+        origin → destinationで
+        ここ->大学  パターンA
+        ここ->駅    パターンB
+        大学->ここ  パターンC
+        駅->ここ    パターンD
+     -->
+    <div class="container">
+        <div class="headrow">
+            <div class="origin head"></div>
+            <div class="rowinfo head">→→→</div>
+            <div class="destination head"></div>
+        </div>
+        <div class="row"
+        v-for="">
+            <div class="origin">
+                <span class="time"></span>
+            </div>
+            <rowinfo></rowinfo>
+            <div class="destination">
+                <span class="time"></span>
+            </div>
+        </row>
+    </div>
+</template>
+
+<!-- 
+    1. selectエリア
+        - バス停を選択する
+        - さくっとプルダウンでいいと思う
+        - ここにシステムの説明と出力ボタンも
+    2. previewエリア
+        - A3風のものが表示される
+ -->
+<div id="app">
+    <div class="select">
+        <h1>WingsMap</h1>
+        <p>説明</p>
+        <select name="select">
+            <option disabled value=""></option>
+            <option
+            v-for=""></option>
+        </select>
+        <button></button>
+    </div>
+    <div class="preview A3 landscape">
+        <!-- つまりA3の横 -->
+        <timetable class="tableA"></timetable>
+        <timetable class="tableB"></timetable>
+        <timetable class="tableC"></timetable>
+        <timetable class="tableD"></timetable>
+    </div>
+</div>
+</body>
+</html>
